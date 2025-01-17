@@ -235,7 +235,31 @@ body {
     background-color: var(--accentColor);
     color: var(--bgColor);
 }
-
+#image-scroll-container {
+    width: 100%; /* Chiều rộng của khung chứa */
+    overflow-x: auto; /* Tạo thanh cuộn ngang khi nội dung vượt quá khung */
+    white-space: nowrap; /* Ngăn các hình ảnh xuống dòng */
+    padding: 10px 0; /* Thêm padding để đẹp hơn */
+    background-color: var(--bgColor2); /* Màu nền phù hợp với theme của bạn */
+    margin-top: 20px; /* Khoảng cách phía trên */
+  }
+  
+  #image-scroll {
+    display: inline-block; /* Hiển thị các hình ảnh trên cùng một dòng */
+  }
+  
+  #image-scroll img {
+    width: 150px; /* Chiều rộng của mỗi ảnh */
+    height: auto; /* Chiều cao tự động điều chỉnh theo tỷ lệ */
+    margin-right: 10px; /* Khoảng cách giữa các ảnh */
+    border-radius: 10px; /* Bo góc ảnh */
+    cursor: pointer; /* Hiệu ứng con trỏ khi di chuột qua ảnh */
+    transition: transform 0.3s ease; /* Hiệu ứng phóng to khi hover */
+  }
+  
+  #image-scroll img:hover {
+    transform: scale(1.1); /* Phóng to ảnh khi hover */
+  }
 
 /*-----------------------parallax-----------------------*/
 /* credits: https://www.youtube.com/watch?v=aywzn9cf-_U */
