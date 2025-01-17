@@ -235,13 +235,17 @@ body {
     background-color: var(--accentColor);
     color: var(--bgColor);
 }
+/*-------------------------image scroll container-----------------------*/
 #image-scroll-container {
-    width: 100%; /* Chiều rộng của khung chứa */
+    width: 480px; /* Chiều rộng của khung chứa */
+    height: 480px; /* Chiều cao của khung chứa */
     overflow-x: auto; /* Tạo thanh cuộn ngang khi nội dung vượt quá khung */
+    overflow-y: hidden; /* Ẩn thanh cuộn dọc */
     white-space: nowrap; /* Ngăn các hình ảnh xuống dòng */
-    padding: 10px 0; /* Thêm padding để đẹp hơn */
+    padding: 10px; /* Thêm padding để đẹp hơn */
     background-color: var(--bgColor2); /* Màu nền phù hợp với theme của bạn */
     margin-top: 20px; /* Khoảng cách phía trên */
+    border-radius: 10px; /* Bo góc khung chứa */
   }
   
   #image-scroll {
@@ -250,15 +254,36 @@ body {
   
   #image-scroll img {
     width: 150px; /* Chiều rộng của mỗi ảnh */
-    height: auto; /* Chiều cao tự động điều chỉnh theo tỷ lệ */
+    height: 150px; /* Chiều cao của mỗi ảnh */
     margin-right: 10px; /* Khoảng cách giữa các ảnh */
     border-radius: 10px; /* Bo góc ảnh */
     cursor: pointer; /* Hiệu ứng con trỏ khi di chuột qua ảnh */
     transition: transform 0.3s ease; /* Hiệu ứng phóng to khi hover */
+    object-fit: cover; /* Đảm bảo ảnh không bị méo */
   }
   
   #image-scroll img:hover {
     transform: scale(1.1); /* Phóng to ảnh khi hover */
+  }
+  
+  /* Tùy chỉnh thanh cuộn */
+  #image-scroll-container::-webkit-scrollbar {
+    height: 12px; /* Chiều cao của thanh cuộn */
+  }
+  
+  #image-scroll-container::-webkit-scrollbar-track {
+    background: var(--bgColor2); /* Màu nền của track */
+    border-radius: 10px; /* Bo góc track */
+  }
+  
+  #image-scroll-container::-webkit-scrollbar-thumb {
+    background: var(--accentColor); /* Màu của thanh cuộn */
+    border-radius: 10px; /* Bo góc thanh cuộn */
+    border: 2px solid var(--bgColor2); /* Viền xung quanh thanh cuộn */
+  }
+  
+  #image-scroll-container::-webkit-scrollbar-thumb:hover {
+    background: #ccc; /* Màu thanh cuộn khi hover */
   }
 
 /*-----------------------parallax-----------------------*/
