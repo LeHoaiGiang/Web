@@ -237,7 +237,7 @@ body {
 }
 /*-------------------------image scroll container-----------------------*/
 #image-scroll-container {
-    width: 480px; /* Chiều rộng của khung chứa */
+    width: 1920px; /* Chiều rộng của khung chứa */
     height: 480px; /* Chiều cao của khung chứa */
     overflow-x: auto; /* Tạo thanh cuộn ngang khi nội dung vượt quá khung */
     overflow-y: hidden; /* Ẩn thanh cuộn dọc */
@@ -253,8 +253,8 @@ body {
   }
   
   #image-scroll img {
-    width: 150px; /* Chiều rộng của mỗi ảnh */
-    height: 150px; /* Chiều cao của mỗi ảnh */
+    width: 480px; /* Chiều rộng của mỗi ảnh */
+    height: 480px; /* Chiều cao của mỗi ảnh */
     margin-right: 10px; /* Khoảng cách giữa các ảnh */
     border-radius: 10px; /* Bo góc ảnh */
     cursor: pointer; /* Hiệu ứng con trỏ khi di chuột qua ảnh */
