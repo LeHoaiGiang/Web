@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap');
 
 :root {
     --bgColor: #223344;
@@ -6,6 +6,17 @@
     --accentColor: #FFF;
     --font: 'Karla', sans-serif;
     --delay: .3s;
+
+    /* New variables for better maintainability */
+    --border-radius: 10px;
+    --border-radius-small: 8px;
+    --border-radius-large: 12px;
+    --transition-fast: 0.3s ease;
+    --transition-slow: 0.5s ease-in-out;
+    --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.1);
+    --shadow-medium: 0 8px 25px rgba(0, 0, 0, 0.3);
+    --glass-bg: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.2);
 }
 
 body {
@@ -57,23 +68,28 @@ body {
     background-color: transparent;
     color: var(--accentColor);
     border: solid var(--accentColor) 2px;
-    border-radius: 10px;
+    border-radius: var(--border-radius);
     font-size: 1rem;
     text-align: center;
     display: block;
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 10px;
-    padding: 10px; /* 17px */
+    padding: 12px 20px;
     text-decoration: none;
-    /* transition: all .25s cubic-bezier(.08, .59, .29, .99); */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     -webkit-tap-highlight-color: transparent;
+    backdrop-filter: blur(5px);
+    box-shadow: var(--shadow-light);
 }
 
 @media (hover: hover) {
     .link:hover {
         background-color: var(--accentColor);
         color: var(--bgColor);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-medium);
+        border-color: var(--accentColor);
     }
 }
 
@@ -236,55 +252,63 @@ body {
     color: var(--bgColor);
 }
 /*-------------------------image scroll container-----------------------*/
+/* Modern responsive image scroll container */
 #image-scroll-container {
-    width: 1920px; /* Chiều rộng của khung chứa */
-    height: 480px; /* Chiều cao của khung chứa */
-    overflow-x: auto; /* Tạo thanh cuộn ngang khi nội dung vượt quá khung */
-    overflow-y: hidden; /* Ẩn thanh cuộn dọc */
-    white-space: nowrap; /* Ngăn các hình ảnh xuống dòng */
-    padding: 10px; /* Thêm padding để đẹp hơn */
-    background-color: var(--bgColor2); /* Màu nền phù hợp với theme của bạn */
-    margin-top: 20px; /* Khoảng cách phía trên */
-    border-radius: 10px; /* Bo góc khung chứa */
-  }
-  
-  #image-scroll {
-    display: inline-block; /* Hiển thị các hình ảnh trên cùng một dòng */
-  }
-  
-  #image-scroll img {
-    width: 480px; /* Chiều rộng của mỗi ảnh */
-    height: 480px; /* Chiều cao của mỗi ảnh */
-    margin-right: 10px; /* Khoảng cách giữa các ảnh */
-    border-radius: 10px; /* Bo góc ảnh */
-    cursor: pointer; /* Hiệu ứng con trỏ khi di chuột qua ảnh */
-    transition: transform 0.3s ease; /* Hiệu ứng phóng to khi hover */
-    object-fit: cover; /* Đảm bảo ảnh không bị méo */
-  }
-  
-  #image-scroll img:hover {
-    transform: scale(1.1); /* Phóng to ảnh khi hover */
-  }
-  
-  /* Tùy chỉnh thanh cuộn */
-  #image-scroll-container::-webkit-scrollbar {
-    height: 12px; /* Chiều cao của thanh cuộn */
-  }
-  
-  #image-scroll-container::-webkit-scrollbar-track {
-    background: var(--bgColor2); /* Màu nền của track */
-    border-radius: 10px; /* Bo góc track */
-  }
-  
-  #image-scroll-container::-webkit-scrollbar-thumb {
-    background: var(--accentColor); /* Màu của thanh cuộn */
-    border-radius: 10px; /* Bo góc thanh cuộn */
-    border: 2px solid var(--bgColor2); /* Viền xung quanh thanh cuộn */
-  }
-  
-  #image-scroll-container::-webkit-scrollbar-thumb:hover {
-    background: #ccc; /* Màu thanh cuộn khi hover */
-  }
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    padding: 10px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    scroll-behavior: smooth;
+}
+
+#image-scroll {
+    display: inline-flex;
+    gap: 15px;
+    align-items: center;
+}
+
+#image-scroll img {
+    max-height: 180px;
+    max-width: 250px;
+    height: auto;
+    width: auto;
+    object-fit: contain;
+    border-radius: 8px;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#image-scroll img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Custom scrollbar styling */
+#image-scroll-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+#image-scroll-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+#image-scroll-container::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+#image-scroll-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
 
 /*-----------------------parallax-----------------------*/
 /* credits: https://www.youtube.com/watch?v=aywzn9cf-_U */

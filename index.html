@@ -12,36 +12,7 @@
     <link rel="stylesheet" href="style.css">
     <!-- Custom CSS for image scroll -->
     <style>
-      /* Custom scrollbar for image container */
-      #image-scroll-container::-webkit-scrollbar {
-        height: 8px;
-      }
-
-      #image-scroll-container::-webkit-scrollbar-track {
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 4px;
-      }
-
-      #image-scroll-container::-webkit-scrollbar-thumb {
-        background: rgba(255, 255, 255, 0.3);
-        border-radius: 4px;
-        transition: background 0.3s ease;
-      }
-
-      #image-scroll-container::-webkit-scrollbar-thumb:hover {
-        background: rgba(255, 255, 255, 0.5);
-      }
-
-      /* Hover effect for images */
-      #image-scroll img:hover {
-        transform: scale(1.05);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-      }
-
-      /* Smooth scrolling */
-      #image-scroll-container {
-        scroll-behavior: smooth;
-      }
+      /* Image popup styling */
 
       /* Image popup styling */
       #imagePopup {
@@ -138,7 +109,7 @@
         <i class="fab fa-youtube">&nbsp;</i>YouTube
       </a>
         <!-- Thêm link tiktok -->
-      <a class="link" href="https://www.tiktok.com/@lehoaigiang1998" target="_blank">
+      <a class="link" href="" target="_blank">
         <i class="fab fa-tiktok">&nbsp;</i>TikTok
       </a>
     </div>
@@ -170,38 +141,74 @@
 
     <!-- JavaScript for Image Popup -->
     <script>
-      function openImagePopup(imageSrc, imageAlt) {
-        const popup = document.getElementById('imagePopup');
-        const popupImage = document.getElementById('popupImage');
-        const popupCaption = document.getElementById('popupCaption');
+      // Wait for DOM to be fully loaded
+      document.addEventListener('DOMContentLoaded', function() {
+        console.log('DOM loaded, initializing image popup functions');
 
-        popupImage.src = imageSrc;
-        popupImage.alt = imageAlt;
-        popupCaption.textContent = imageAlt;
+        // Make functions global so onclick can access them
+        window.openImagePopup = function(imageSrc, imageAlt) {
+          console.log('Opening popup for:', imageSrc, imageAlt);
+          const popup = document.getElementById('imagePopup');
+          const popupImage = document.getElementById('popupImage');
+          const popupCaption = document.getElementById('popupCaption');
 
-        popup.style.display = 'flex';
-        document.body.style.overflow = 'hidden'; // Prevent background scrolling
-      }
+          if (!popup || !popupImage || !popupCaption) {
+            console.error('Popup elements not found');
+            return;
+          }
 
-      function closeImagePopup() {
-        const popup = document.getElementById('imagePopup');
-        popup.style.display = 'none';
-        document.body.style.overflow = 'auto'; // Restore scrolling
-      }
+          popupImage.src = imageSrc;
+          popupImage.alt = imageAlt;
+          popupCaption.textContent = imageAlt;
 
-      // Close popup when clicking outside the image
-      document.getElementById('imagePopup').addEventListener('click', function(e) {
-        if (e.target === this) {
-          closeImagePopup();
+          popup.style.display = 'flex';
+          document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        };
+
+        window.closeImagePopup = function() {
+          console.log('Closing popup');
+          const popup = document.getElementById('imagePopup');
+          if (popup) {
+            popup.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling
+          }
+        };
+
+        // Close popup when clicking outside the image
+        const imagePopup = document.getElementById('imagePopup');
+        if (imagePopup) {
+          imagePopup.addEventListener('click', function(e) {
+            if (e.target === this) {
+              closeImagePopup();
+            }
+          });
         }
+
+        // Close popup with Escape key
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape') {
+            closeImagePopup();
+          }
+        });
+
+        // Alternative: Event delegation for image clicks
+        const imageScrollContainer = document.getElementById('image-scroll');
+        if (imageScrollContainer) {
+          imageScrollContainer.addEventListener('click', function(e) {
+            if (e.target.tagName === 'IMG') {
+              console.log('Image clicked via event delegation:', e.target.src);
+              openImagePopup(e.target.src, e.target.alt);
+            }
+          });
+        }
+
+        console.log('Image popup functions initialized successfully');
       });
 
-      // Close popup with Escape key
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-          closeImagePopup();
-        }
-      });
+      // Test function - you can call this in browser console
+      function testPopup() {
+        openImagePopup('https://raw.githubusercontent.com/LHGiang1998/Web/main/gianglh.png', 'Test Image');
+      }
     </script>
   </body>
 </html>
