@@ -10,6 +10,39 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
     <!-- Core theme CSS -->
     <link rel="stylesheet" href="style.css">
+    <!-- Custom CSS for image scroll -->
+    <style>
+      /* Custom scrollbar for image container */
+      #image-scroll-container::-webkit-scrollbar {
+        height: 8px;
+      }
+
+      #image-scroll-container::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 4px;
+      }
+
+      #image-scroll-container::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 4px;
+        transition: background 0.3s ease;
+      }
+
+      #image-scroll-container::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.5);
+      }
+
+      /* Hover effect for images */
+      #image-scroll img:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Smooth scrolling */
+      #image-scroll-container {
+        scroll-behavior: smooth;
+      }
+    </style>
   </head>
 
   <body>
@@ -58,11 +91,11 @@
         <i class="fab fa-tiktok">&nbsp;</i>TikTok
       </a>
     </div>
-    <div id="image-scroll-container">
-      <div id="image-scroll">
-        <img src="https://raw.githubusercontent.com/LHGiang1998/Web/main/gianglh.png" alt="Image 1" style="width: 100%; height: auto; object-fit: contain; border-radius: 8px;">
-        <img src="https://raw.githubusercontent.com/LHGiang1998/Web/main/PCB_DNA.PNG" alt="Image 2" style="width: 100%; height: auto; object-fit: contain; border-radius: 8px;">
-        <img src="https://raw.githubusercontent.com/LHGiang1998/Web/main/PCB_LPG.PNG" alt="Image 3" style="width: 100%; height: auto; object-fit: contain; border-radius: 8px;">
+    <div id="image-scroll-container" style="width: 100%; max-width: 600px; margin: 20px auto; overflow-x: auto; overflow-y: hidden; white-space: nowrap; padding: 10px; border-radius: 12px; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px);">
+      <div id="image-scroll" style="display: inline-flex; gap: 15px; align-items: center;">
+        <img src="https://raw.githubusercontent.com/LHGiang1998/Web/main/gianglh.png" alt="Image 1" style="width: 200px; height: 150px; object-fit: cover; border-radius: 8px; flex-shrink: 0; cursor: pointer; transition: transform 0.3s ease;">
+        <img src="https://raw.githubusercontent.com/LHGiang1998/Web/main/PCB_DNA.PNG" alt="Image 2" style="width: 200px; height: 150px; object-fit: cover; border-radius: 8px; flex-shrink: 0; cursor: pointer; transition: transform 0.3s ease;">
+        <img src="https://raw.githubusercontent.com/LHGiang1998/Web/main/PCB_LPG.PNG" alt="Image 3" style="width: 200px; height: 150px; object-fit: cover; border-radius: 8px; flex-shrink: 0; cursor: pointer; transition: transform 0.3s ease;">
         <!-- Thêm nhiều ảnh khác nếu cần -->
       </div>
     </div>
