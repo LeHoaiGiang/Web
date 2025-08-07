@@ -310,6 +310,270 @@ body {
     background: rgba(255, 255, 255, 0.5);
 }
 
+/*-------------------------Project Sidebars-----------------------*/
+#left-projects, #right-projects {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 280px;
+    max-height: 80vh;
+    overflow-y: auto;
+    padding: 20px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--border-radius-large);
+    z-index: 100;
+    transition: all var(--transition-fast);
+}
+
+#left-projects {
+    left: 20px;
+}
+
+#right-projects {
+    right: 20px;
+}
+
+#left-projects h3, #right-projects h3 {
+    color: var(--accentColor);
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.project-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius);
+    padding: 15px;
+    margin-bottom: 15px;
+    transition: all var(--transition-fast);
+    cursor: pointer;
+}
+
+.project-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.project-icon {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 10px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.project-card h4 {
+    color: var(--accentColor);
+    font-size: 1rem;
+    margin: 0 0 8px 0;
+    font-weight: 600;
+}
+
+.project-card p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.85rem;
+    margin: 0 0 12px 0;
+    line-height: 1.4;
+}
+
+.project-link {
+    display: inline-block;
+    color: var(--accentColor);
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 6px 12px;
+    border: 1px solid var(--accentColor);
+    border-radius: var(--border-radius-small);
+    transition: all var(--transition-fast);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.project-link:hover {
+    background: var(--accentColor);
+    color: var(--bgColor);
+    transform: scale(1.05);
+}
+
+/* Custom scrollbar for project sidebars */
+#left-projects::-webkit-scrollbar,
+#right-projects::-webkit-scrollbar {
+    width: 6px;
+}
+
+#left-projects::-webkit-scrollbar-track,
+#right-projects::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+
+#left-projects::-webkit-scrollbar-thumb,
+#right-projects::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+}
+
+#left-projects::-webkit-scrollbar-thumb:hover,
+#right-projects::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* Responsive Design for Project Sidebars */
+@media (max-width: 1200px) {
+    #left-projects, #right-projects {
+        width: 240px;
+    }
+}
+
+@media (max-width: 1024px) {
+    #left-projects {
+        left: 10px;
+    }
+
+    #right-projects {
+        right: 10px;
+    }
+
+    #left-projects, #right-projects {
+        width: 200px;
+        padding: 15px;
+    }
+
+    .project-card {
+        padding: 12px;
+        margin-bottom: 12px;
+    }
+
+    .project-icon {
+        font-size: 1.5rem;
+    }
+
+    .project-card h4 {
+        font-size: 0.9rem;
+    }
+
+    .project-card p {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    #left-projects, #right-projects {
+        position: relative;
+        width: 100%;
+        max-width: 400px;
+        margin: 20px auto;
+        top: auto;
+        transform: none;
+        max-height: none;
+    }
+
+    #left-projects {
+        left: auto;
+    }
+
+    #right-projects {
+        right: auto;
+    }
+
+    #left-projects h3, #right-projects h3 {
+        font-size: 1.1rem;
+        margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    #left-projects, #right-projects {
+        width: calc(100% - 40px);
+        margin: 15px 20px;
+        padding: 15px;
+    }
+
+    .project-card {
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    .project-icon {
+        font-size: 1.3rem;
+        margin-bottom: 8px;
+    }
+
+    .project-card h4 {
+        font-size: 0.85rem;
+        margin-bottom: 6px;
+    }
+
+    .project-card p {
+        font-size: 0.75rem;
+        margin-bottom: 10px;
+    }
+
+    .project-link {
+        font-size: 0.75rem;
+        padding: 5px 10px;
+    }
+}
+
+/* Animation for project cards */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+#left-projects {
+    animation: slideInLeft 0.8s ease-out;
+}
+
+#right-projects {
+    animation: slideInRight 0.8s ease-out;
+}
+
+.project-card {
+    animation: fadeInUp 0.6s ease-out forwards;
+    opacity: 0;
+}
+
+.project-card:nth-child(2) { animation-delay: 0.1s; }
+.project-card:nth-child(3) { animation-delay: 0.2s; }
+.project-card:nth-child(4) { animation-delay: 0.3s; }
+.project-card:nth-child(5) { animation-delay: 0.4s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /*-----------------------parallax-----------------------*/
 /* credits: https://www.youtube.com/watch?v=aywzn9cf-_U */
 #stars1 {
